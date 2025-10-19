@@ -1,17 +1,16 @@
 import { NestFactory } from '@nestjs/core';
-import { ReservationsModule } from './reservations/reservations.module';
+import { AuthModule } from './auth.module';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger as PinoLogger } from 'nestjs-pino';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(ReservationsModule);
+  const app = await NestFactory.create(AuthModule);
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
     }),
   );
-  // Add pino logger for request logging
   app.useLogger(app.get(PinoLogger));
   const configService = app.get(ConfigService);
   await app.listen(configService.get('PORT') as string);
