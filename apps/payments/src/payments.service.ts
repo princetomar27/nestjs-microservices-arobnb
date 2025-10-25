@@ -62,6 +62,11 @@ export class PaymentsService {
 
     this.notificationService.emit('notify_email', {
       email,
+      subject: `Sleeper Reservation Notification - Invoice ID: ${paymentIntent.id}
+      \n Amount: ${amount} ${paymentIntent.currency}
+      \n Payment Method: ${paymentMethod}
+      \n Payment Intent Status: ${paymentIntent.status}
+      \n Payment Intent Created: ${new Date(paymentIntent.created * 1000).toLocaleString()}`,
     });
 
     return paymentIntent;
