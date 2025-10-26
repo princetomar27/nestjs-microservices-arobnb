@@ -12,3 +12,6 @@ export * from './decorators';
 
 // DTOs
 export * from './dto';
+
+// Models
+export * from './models';

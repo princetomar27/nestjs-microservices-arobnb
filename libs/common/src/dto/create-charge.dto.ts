@@ -1,7 +1,5 @@
-import Stripe from 'stripe';
 import { CardDto } from '.';
 import {
-  IsDefined,
   IsNotEmptyObject,
   IsNumber,
   IsOptional,
